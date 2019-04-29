@@ -123,11 +123,7 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0",
-    "vuex": "^2.5.0",
-    "vuex-i18n": "^1.11.0",
-    "vux": "^2.2.0",
-    "vue-svg-icon": "^1.2.9",
-    "child_process": "^1.0.2",
+    "vux-loader": "^1.0.56",
   },
   "engines": {
     "node": ">= 6.0.0",
