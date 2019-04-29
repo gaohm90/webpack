@@ -9,4 +9,28 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script type="text/javascript">
+
+    apiready = function () {
+
+    api.addEventListener({name: 'smartupdatefinish'}, function (ret, err) {
+      api.rebootApp();
+  });
+  var str = navigator.language ;
+  // 中文的处理
+  if(str.substring(0,2) == 'zh'){
+      if(api.deviceModel.substring(0,4) != 'iPad') {
+          return;
+      }
+  }
+
+  api.removeLaunchView({
+      animation: {
+          type: 'fade',
+          duration: 500
+      }
+  });
+
+}
+  </script>
 </html>

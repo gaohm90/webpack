@@ -5,7 +5,7 @@
   "author": "{{ author }}",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js  --host 0.0.0.0",
     "start": "npm run dev",
     {{#if_eq runner "jest"}}
     "unit": "jest --config test/unit/jest.conf.js --coverage",
@@ -27,6 +27,12 @@
   "dependencies": {
     "vue": "^2.5.2"{{#router}},
     "vue-router": "^3.0.1"{{/router}}
+
+    "vuex": "^2.5.0",
+    "vuex-i18n": "^1.11.0",
+    "vux": "^2.2.0",
+    "vue-svg-icon": "^1.2.9",
+    "child_process": "^1.0.2",
   },
   "devDependencies": {
     {{#lint}}
