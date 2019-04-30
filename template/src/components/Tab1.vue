@@ -46,8 +46,8 @@
         
         <tbody>
           <tr v-for="(s,i) in status" :key="i">
-            <td>{{s.name}}</td>
-            <td>{{status_now[i]}} {{s.dw}}</td>
+            <td>\{{s.name}}</td>
+            <td>\{{status_now[i]}}\{{s.dw}}</td>
           </tr>
           
         </tbody>
