@@ -1,6 +1,6 @@
 <template>
     <div style="height:100%">
-    <x-header :left-options="{showBack: false}"  style="width:100%;position:absolute;left:0;top:0;z-index:100;"  >{{menus[index].label}}</x-header>
+    <x-header :left-options="{showBack: false}"  style="width:100%;position:absolute;left:0;top:0;z-index:100;"  >标题</x-header>
 <view-box ref="viewBox" :body-padding-top="isShowNav ? '46px' : '0'" body-padding-bottom="55px" style="height:100%">
     <tab1 v-if="index == 0"></tab1>
     <tab2 v-if="index ==1"></tab2>
