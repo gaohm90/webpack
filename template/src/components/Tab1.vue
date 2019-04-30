@@ -23,25 +23,6 @@
         <icon slot="icon" :name="btn.icon" scale="3" style="color:gray"></icon>
       </grid-item>
     </grid>
-
-
-
-       <!-- <grid :cols="2" :show-lr-borders="false" :show-vertical-dividers="false">
-      <grid-item disabled:true v-for="(sta,i) in status" :key=i  >
-              <div style="width:80%;margin-left: 10%;color:black">
-                <x-circle
-                :percent="status_now[i]/sta.max*100"
-                :stroke-width="5"
-                stroke-color="#04BE02">
-                <p><span style="font-size:30px">{{status_now[i]}}</span>{{sta.dw}}</p>
-                <span>{{sta.name}}</span>
-                </x-circle>
-            </div>          
-      </grid-item>
-    </grid> -->
-
-
-
       <x-table>
         
         <tbody>
@@ -52,11 +33,6 @@
           
         </tbody>
       </x-table>
-
-                <!-- <box gap="20px 20px">
-                    <x-button :gradients="['#1D62F0', '#19D5FD']" @click.native="startBtn()">Start washing</x-button>
-                    <x-button :gradients="['#FF2719', '#FF61AD']" @click.native="stopBtn">Emergency stop</x-button>
-                </box> -->
   </div>
 </template>
 
