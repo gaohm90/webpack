@@ -14,8 +14,8 @@
                 :percent="status_now[i]/sta.max*100"
                 :stroke-width="5"
                 stroke-color="#04BE02">
-                <p><span style="font-size:30px">{{status_now[i]}}</span>{{sta.dw}}</p>
-                <span>{{sta.name}}</span>
+                <p><span style="font-size:30px">\{{status_now[i]}}</span>\{{sta.dw}}</p>
+                <span>\{{sta.name}}</span>
                 </x-circle>
             </div>
           

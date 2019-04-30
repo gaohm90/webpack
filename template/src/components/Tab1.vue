@@ -10,7 +10,7 @@
                 :trail-width="6"
                 trail-color="#ececec"
                 anticlockwise>                
-                <span style="font-size:40px;color: #5B86E5;">{{ws_status}}</span>
+                <span style="font-size:40px;color: #5B86E5;">\{{ws_status}}</span>
                 </x-circle>
             </div>
             <div style="padding:0 15px;">
