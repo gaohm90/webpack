@@ -60,6 +60,9 @@ export default {
   methods: {
       changeSelect() {
           this.$store.commit('changeSelect', this.index);
+          setTimeout(ret=>{
+            this.$refs.viewBox.scrollTo(top);
+          },50);
       }
   }
 }
