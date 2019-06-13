@@ -5,6 +5,9 @@ import Device from '@/components/set/Device'
 import Tongji from '@/components/set/TongJi'
 import Fankui from '@/components/set/Fankui'
 import TongZhi from '@/components/set/TongZhi'
+import Login from '@/components/me/Login'
+import Regist from '@/components/me/Regist'
+
 
 Vue.use(Router)
 
@@ -29,6 +32,13 @@ export default new Router({
     {
       path: '/tongzhi',
       component: TongZhi
+    },
+    {
+      path: '/login',
+      component: Login
+    },{
+      path: '/regist',
+      component: Regist
     }
   ]
 })

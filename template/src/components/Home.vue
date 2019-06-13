@@ -64,6 +64,31 @@ export default {
             this.$refs.viewBox.scrollTo(top);
           },50);
       }
-  }
+  },
+  mounted() {
+      var that = this;
+    if(!this.$store.state.isLogin) {
+        this.$router.push('/login');        
+        return;
+    }
+        // 跳转连接设备页面
+        if(!this.$store.state.connect){
+            this.$vux.confirm.show({
+                title: 'No Device',
+                content: 'Go to connect ?',
+                confirmText : "ok",
+                cancelText:"Cancel",
+            
+            onCancel : () => {
+                console.log(this) 
+            },
+            onConfirm : () => {
+                that.$router.push('/device');
+            }
+            })
+    
+        }
+    
+  } 
 }
 </script>

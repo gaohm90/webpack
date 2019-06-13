@@ -38,6 +38,7 @@ let store = new Vuex.Store({
   },
   state: {    
     isLoading: false,
+    isLogin:false,
     status:status,    
     tab_select:0,
     notice:false,
@@ -46,6 +47,9 @@ let store = new Vuex.Store({
   mutations: {
     changeStatus (state, payload ) {      
       state.status_now = payload      
+    },
+    setLogin (state, payload ) {      
+      state.isLogin = payload      
     },
     changeConnect (state, payload ) {      
       state.connect = payload      
