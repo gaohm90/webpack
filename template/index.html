@@ -23,19 +23,23 @@
   });
   var str = navigator.language ;
   // 中文的处理
-  if(str.substring(0,2) == 'zh'){
-      if(api.deviceModel.substring(0,4) != 'iPad') {
-          return;
-      }
-  }
-
-  api.removeLaunchView({
+  if(str.substring(0,2) == 'zh' && api.deviceModel.substring(0,4) != 'iPad'){
+      setTimeout(function(ret){
+        api.removeLaunchView({
+                animation: {
+                    type: 'fade',
+                    duration: 500
+                }
+            });
+      },3000);
+  } else{
+    api.removeLaunchView({
       animation: {
           type: 'fade',
           duration: 500
       }
-  });
-
+    });
+  }
 }
   </script>
 </html>

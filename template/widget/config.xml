@@ -16,11 +16,8 @@
   <permission name="internet"/>
   <preference name="querySchemes" value="weixin,wechat,mqqapi,mqq,alipay" />
 
-  
-
-  
+  <feature name="jiguangPush"/>
   <feature name="push"/>
-   <feature name="mam"/>
-
+  <feature name="mam"/>
   <access origin="*"/>
 </widget>
