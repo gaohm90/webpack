@@ -13,7 +13,7 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import Icon from 'vue-svg-icon/Icon.vue'
-import {XHeader,Group, Grid, Cell,GridItem, GroupTitle, ViewBox ,XButton,Toast,ToastPlugin,LoadingPlugin} from 'vux'
+import {XHeader,Group, Grid, Cell,GridItem, GroupTitle, ViewBox ,XButton,Toast,ToastPlugin,LoadingPlugin,ConfirmPlugin} from 'vux'
 
 Vue.use(Vuex)
 Vue.component('icon', Icon)
@@ -28,6 +28,7 @@ Vue.component('x-button', XButton)
 Vue.component('toast', Toast)
 Vue.use(ToastPlugin)
 Vue.use(LoadingPlugin)
+Vue.use(ConfirmPlugin)
 
 /** i18n vuex设置部分 **/
 import vuexI18n from 'vuex-i18n'

@@ -25,8 +25,8 @@ const menus = [
         icon:"home",        
         label:"Status"
     },{        
-        icon:"base",
-        label:"Scenes"
+        icon:"msg",
+        label:"Message"
     },{       
         icon:"setting",
         label:"Setting"
