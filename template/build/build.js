@@ -3,6 +3,7 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
+const fs = require('fs')
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
@@ -14,12 +15,12 @@ const webpackConfig = require('./webpack.prod.conf')
 const spinner = ora('building for production...')
 spinner.start()
 
-const child_process = require('child_process');    
+
 //****ghm add 2019-08-25 */   
-if (fs.existsSync(config.build.assetsRoot+'/widget')) child_process.execSync("rm -rf " + config.build.assetsRoot+'/widget');
 
 //****ghm add 2019-04-26 */
-
+const child_process = require('child_process');    
+if (fs.existsSync(config.build.assetsRoot)) child_process.execSync("rm -rf " + config.build.assetsRoot);
 var sh = "cp -r widget "+config.build.assetsRoot;
 child_process.execSync(sh);
 console.log(JSON.stringify(config.build));
