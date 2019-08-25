@@ -13,7 +13,7 @@ jobs:
           key: template-cache-{{ checksum "package.json" }}
       - run:
           name: Install npm dependencies
-          command: npm install
+          command: cnpm install
       - save_cache:
           key: template-cache-{{ checksum "package.json" }}
           paths:
@@ -45,7 +45,7 @@ jobs:
           key: template-cache-minimal-{{ checksum "package.json" }}
       - run:
           name: Install npm dependencies
-          command: npm install
+          command: cnpm install
       - save_cache:
           key: template-cache-minimal-{{ checksum "package.json" }}
           paths:
@@ -66,7 +66,7 @@ jobs:
           key: template-cache-full-{{ checksum "package.json" }}
       - run:
           name: Install npm dependencies
-          command: npm install
+          command: cnpm install
       - save_cache:
           key: template-cache-full-{{ checksum "package.json" }}
           paths:
@@ -99,7 +99,7 @@ jobs:
           key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}
       - run:
           name: Install npm dependencies
-          command: npm install
+          command: cnpm install
       - save_cache:
           key: template-cache-full-karma-airbnb-{{ checksum "package.json" }}
           paths:
