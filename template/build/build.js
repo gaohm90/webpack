@@ -16,8 +16,7 @@ spinner.start()
 
 const child_process = require('child_process');    
 //****ghm add 2019-08-25 */   
-var sh = "cd "+config.build.assetsRoot+";rm -rf ./*widget";
-child_process.execSync(sh);
+if (fs.existsSync(config.build.assetsRoot+'/widget')) child_process.execSync("rm -rf " + config.build.assetsRoot+'/widget');
 
 //****ghm add 2019-04-26 */
 
