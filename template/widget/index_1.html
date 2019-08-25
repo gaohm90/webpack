@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+
+    <link rel="stylesheet" type="text/css" href="css/api.css" />
+    <link rel="stylesheet" type="text/css" href="css/mui.css" />
+    <link rel="stylesheet" type="text/css" href="./icon.css" />
+    <style type="text/css">
+        body,html{height:100%}
+        .mui-icon{font-family:Muiicons;font-size:24px;font-weight:400;font-style:normal;line-height:1;display:inline-block;text-decoration:none;-webkit-font-smoothing:antialiased}
+        .aui-nav{position:fixed;right:0;left:0;bottom:0;z-index:10;width:100%;height:55px;background-color:#fff}
+        .aui-nav .aui-bar-tab{width:100%;background-color:#fff;display:box;display:-webkit-box;box-sizing:border-box;font-size:12px;height:55px}
+        .aui-nav .aui-bar-tab li{position:relative;text-align:center;color:#666;width:100%;box-flex:1;-webkit-box-flex:1;box-sizing:border-box}
+        .aui-nav .aui-bar-tab p{font-size:12px;margin-bottom:0}
+        .aui-nav .aui-bar-tab{background:#fff;border-top:.5px solid #c8c7cc}
+        .aui-nav .aui-bar-tab .mui-icon{font-size:22px;color:#262636;padding-top:5px;height:30px;line-height:30px;display:inline-block}
+        .aui-nav .aui-bar-tab .active-success .mui-icon{color:#db1d37}
+        .aui-nav .aui-bar-tab{background:#ddd;border-top:.5px solid #c8c7cc}
+        .aui-bar-tab p{color:#262636}
+        .aui-hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body style="background-color: white">
+
+
+
+<footer class="aui-nav aui-hidden" id="aui-footer" style="background-color: #dddddd">
+    <ul class="aui-bar-tab">
+        <li class="" id="tabbar1" onclick="open_1()">
+            <span class="mui-icon iconfont icon-shouye1"></span>
+            <p>首页</p>
+        </li>
+        <li id="tabbar3" onclick="open_3()">
+            <span class="mui-icon iconfont icon-houtui3"></span>
+            <p>后退</p>
+        </li>
+        <li id="tabbar4" onclick="open_4()">
+            <span class="mui-icon iconfont icon-qianjin3 "></span>
+            <p>前进</p>
+        </li>
+        <li id="tabbar2" onclick="open_2()">
+            <span class="mui-icon iconfont icon-shuaxin1"></span>
+            <p>刷新</p>
+        </li>
+        <li id="tabbar5" onclick="open_5()">
+            <span class="mui-icon iconfont icon-tuichu "></span>
+            <p>退出</p>
+        </li>
+    </ul>
+</footer>
+
+</body>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+    var screen_type = 0;
+    var yuming_url = '';
+    var bottom_h = 0;
+    //    var statusBar = false;
+    apiready = function(){
+        api.parseTapmode();
+        api.setScreenOrientation({
+            orientation: 'portrait_up'
+        });
+        yuming_url = api.pageParam.url;
+//        statusBar = api.pageParam.statusBar;
+
+        $api.setStorage('index_url',yuming_url);
+        console.log(yuming_url);
+
+        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
+        setTimeout(function (ret) {
+            zhengchang();
+        },100);
+
+
+        if($api.getStorage('bottom_type') && $api.getStorage('bottom_type') == 1) {
+            //需要底部了
+            $api.removeCls($api.byId('aui-footer'),'aui-hidden');
+            bottom_h = 50;
+        } else {
+            $api.addCls($api.byId('aui-footer'),'aui-hidden');
+            bottom_h = 0;
+        }
+
+        // addEvent('urlChange',function(ret){
+        //     open_1();
+        // });
+    };
+
+    function zhengchang() {
+        api.setScreenOrientation({
+            orientation: 'auto'
+        });
+        openFrmType(yuming_url);
+        hengshuping();
+    }
+
+
+    function hengshuping(){
+        if(window.orientation==180||window.orientation==0){
+            console.log("竖屏");
+            screen_type = 0;
+            if(bottom_h > 10 ) $api.removeCls($api.byId('aui-footer'),'aui-hidden');
+            h = Math.max(api.winHeight, api.winWidth) - bottom_h;
+            y = 0;
+            if($api.getStorage('statusBar') == 1) {
+                api.setFullScreen({fullScreen: false});
+                h -= Math.max(20, api.safeArea.top);
+                h -= api.safeArea.top>20?34:0;
+                y = Math.max(20, api.safeArea.top);
+            }
+
+
+            api.setFrameAttr({
+                name: 'new_pu',
+                rect: {
+                    y: y,
+                    h: h
+                }
+            });
+        }
+        if(window.orientation==90||window.orientation==-90){
+            console.log("横屏");
+            api.setFullScreen({fullScreen: true});
+            screen_type = 1;
+            $api.addCls($api.byId('aui-footer'),'aui-hidden');
+            h = Math.min(api.winHeight, api.winWidth);
+            console.log(h);
+            api.setFrameAttr({
+                name: 'new_pu',
+                rect: {
+                    y: 0,
+                    h: h
+                }
+            });
+        }
+    }
+
+    function openFrmType(url) {
+        if(screen_type == 0) {
+            h = Math.max(api.winHeight, api.winWidth) -bottom_h;
+            y = 0;
+            openFrm('new_pu',url,0,0,'auto',h,{});
+        } else {
+            h = Math.min(api.winHeight, api.winWidth);
+            openFrm('new_pu',url,0,0,'auto', 'auto',{});
+        }
+
+
+    }
+
+    function open_1() {
+        openFrmType(yuming_url);
+    }
+
+    function open_2() {
+        var jsfun = 'window.history.go(0)';
+        api.execScript({
+            frameName: 'new_pu',
+            script: jsfun
+        });
+    }
+
+    function open_3() {
+        api.historyBack({
+            frameName: 'new_pu'
+        }, function(ret, err) {
+
+        });
+    }
+
+    function open_4() {
+        api.historyForward({
+            frameName: 'new_pu'
+        }, function(ret, err) {
+            if (!ret.status) {
+            }
+        });
+    }
+
+    function open_5() {
+        api.closeWidget({silent:false});
+    }
+
+
+
+
+    function openFrm(name,url,x,y,w,h,pageParam) {
+        api.openFrame({
+            name: name,
+            url: url,
+            rect: {
+                x: x,
+                y: y,
+                w: w,
+                h: h
+            },
+            pageParam: pageParam,
+            reload:true,
+            allowEdit:true,
+            useWKWebView:true,
+            historyGestureEnabled:true,
+            scaleEnabled:true,
+            progress:{type:"default",title:'正在加载'},
+            bounces: false,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: false,
+            hScrollBarEnabled: false
+        });
+    }
+
+</script>
+</html>

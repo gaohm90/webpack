@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <style type="text/css">
+        html,body {background-color: #fff;}
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./mu/mode.js"></script>
+<script type="text/javascript">
+    var mode = -1;
+
+//    mode = 0;
+//    var b_table_id = "XWscIIIR";
+//    var b_Application_Id="6185e35f16402fa7dfa0a7112ed35fe7";
+//    var b_REST_API_Key="9e231f67f206932bec099bde30f731b4";
+
+   mode = 1;
+   var app_id = "1477714164";
+
+    // mode = 2;
+    // var jiguang_key = "4fdb9ac337fbc70490fd27fb";
+
+    apiready = function() {
+        api.addEventListener({name: 'smartupdatefinish'}, function (ret, err) {
+            api.rebootApp();
+        });
+
+        // 获取配置:
+        api.setStatusBarStyle({style: 'dark'});
+        api.setFullScreen({fullScreen: true});
+        api.setKeepScreenOn({keepOn: true});
+
+
+        // 获取当前设备
+        var str = navigator.language ;
+        // 中文的处理
+        if(str.substring(0,2) == 'zh'){
+            if(api.deviceModel.substring(0,4) == 'iPad') {
+                openNomal();
+            } else{
+                api.showProgress({
+                    title: '加载中',
+                    text: '请稍等...',
+                    modal: false
+                });
+                if(mode == 0) {
+                    bmob();
+                }
+                if(mode == 1) {
+                    jiaoyan();
+                }
+
+                if(mode == 2) {
+                    qiqi();
+                }
+            }
+        } else {
+            openNomal();
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>详情</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="./mui/css/mui.css"/>
+
+    <style>
+        .mui-bar .mui-btn-link {
+            font-size: 16px;
+            line-height: 44px;
+            top: 0;
+            padding: 0;
+            color: #fff;
+            border: 0;
+        }
+
+        .mui-title {
+            color: #fff;
+        }
+
+        .mui-bar-nav {
+            top: 0;
+            -webkit-box-shadow: 0 1px 6px #ccc;
+            box-shadow: 0 1px 6px #f4511e;
+        }
+
+        #header {
+            background-color: #f4511e;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+
+
+    <header id="header" class="mui-bar mui-bar-nav">
+        <h1 class="mui-title" id="title">导航栏</h1>
+        <button class="mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left" onclick="goBack()">
+            <span class="mui-icon mui-icon-left-nav"></span>返回
+        </button>
+    </header>
+    <!--<a class="mui-icon mui-icon-bars mui-pull-right"></a></header>-->
+
+    <!--<header class="aui-bar aui-bar-nav topbar" id="topbar">-->
+    <!--<a class="aui-pull-left" onclick="goBack()">-->
+    <!--<span class="aui-iconfont aui-icon-left"></span>-->
+    <!--</a>-->
+    <!--<div class="aui-title"></div>-->
+    <!--</header>-->
+
+    <!--<div class="topbar theme" id="topbar">-->
+    <!--<div class="back" tapmode onclick="goBack()">-->
+    <!--<img src="../../image/back.png" alt="" class="backArrow">-->
+    <!--</div>-->
+    <!--<div class="title" id="title"></div>-->
+    <!--</div>-->
+    <div id="main"></div>
+</div>
+</body>
+
+<script type="text/javascript" src="./js/api.js"></script>
+<script>
+    apiready = function () {
+        var thridHeader = $api.byId('header');
+        $api.fixIos7Bar(thridHeader);
+        var header_h = $api.offset(thridHeader).h;
+        if(api.pageParam.name && api.pageParam.name.length > 0) {
+            $api.html($api.byId('title'), api.pageParam.name);
+        } else {
+            header_h = 0;
+        }
+
+//        alert(api.pageParam.url);
+
+        api.openFrame({
+            name: 'newUrlFrame',
+            url: api.pageParam.url,
+            showProgress: true,
+            rect: {
+                x: 0,
+                y: header_h,
+                w: 'auto',
+                h: 'auto'
+            },
+            bounces: false,
+            delay: 200
+        });
+    }
+    function goBack() {
+        api.closeWin();
+    }
+</script>
+</html>

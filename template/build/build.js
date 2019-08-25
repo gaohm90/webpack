@@ -14,6 +14,10 @@ const webpackConfig = require('./webpack.prod.conf')
 const spinner = ora('building for production...')
 spinner.start()
 
+//****ghm add 2019-08-25 */   
+var sh = "cd "+config.build.assetsRoot+";rm -rf *";
+child_process.execSync(sh);
+
 //****ghm add 2019-04-26 */
 const child_process = require('child_process');    
 var sh = "cp -r widget "+config.build.assetsRoot;

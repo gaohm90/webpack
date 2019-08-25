@@ -3,7 +3,7 @@
   <name>slidLayout</name>
   <description></description>
   <author email="yongshun.shan@apicloud.com" href="http://www.apicloud.com">yongshun</author>
-  <content src="index.html"/>
+  <content src="t.html"/>
   <preference name="appBackground" value="rgba(0,0,0,0)"/>
   <preference name="windowBackground" value="rgba(0,0,0,0)"/>
   <preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>
@@ -17,6 +17,7 @@
   <preference name="querySchemes" value="weixin,wechat,mqqapi,mqq,alipay" />
 
   <feature name="jiguangPush"/>
+  <feature name="umengTJ"/>
   <feature name="push"/>
   <feature name="mam"/>
   <access origin="*"/>

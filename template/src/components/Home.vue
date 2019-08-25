@@ -33,6 +33,9 @@ const menus = [
     }
 ]
 
+import {messgeShow,openWin, openFrm, openNewUrl} from '../lib/common.js'
+import {getUrl} from '../lib/tool.js'
+
 import { Tabbar, TabbarItem, Group, Cell ,ViewBox} from 'vux'
 
 import Tab1 from './Tab1'
