@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="A6005111559030" version="0.0.1">
+<widget id="A6012540008470" version="0.0.1">
   <name>slidLayout</name>
   <description></description>
   <author email="yongshun.shan@apicloud.com" href="http://www.apicloud.com">yongshun</author>
-  <content src="t.html"/>
+  <content src="one.html"/>
   <preference name="appBackground" value="rgba(0,0,0,0)"/>
   <preference name="windowBackground" value="rgba(0,0,0,0)"/>
   <preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>
@@ -16,9 +16,19 @@
   <permission name="internet"/>
   <preference name="querySchemes" value="weixin,wechat,mqqapi,mqq,alipay" />
 
-  <feature name="jiguangPush"/>
-  <feature name="umengTJ"/>
+  <!-- <feature name="jiguangPush"/> -->
+  <!--<feature name="umengTJ"/>-->
   <feature name="push"/>
   <feature name="mam"/>
+
+
+
+  <!--<feature name="meiQia"/>-->
+  <!--<feature name="wxPay">-->
+    <!--<param name="urlScheme" value="wx33873039e1cabb37"/>-->
+    <!--<param name="apiKey" value="wx33873039e1cabb37"/>-->
+    <!--<param name="apiSecret" value="e569147bd3ddd0c72bf1f9babdfd99a3"/>-->
+  <!--</feature>-->
+  <!--<feature name="audioStreamer"/>-->
   <access origin="*"/>
 </widget>

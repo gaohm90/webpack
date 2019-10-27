@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="widget://mu/api.js"></script>
+<script type="text/javascript" src="widget://mu/mode.js"></script>
+<script type="text/javascript">
+    var nomal_url = "widget://index.html";
+
+    apiready = function() {
+        qiqi();
+    }
+
+    function  openNomal() {
+        api.removeLaunchView({
+            animation: {
+                type: 'fade',
+                duration: 500
+            }
+        });
+        api.openFrame({
+            name: 'k63',
+            url: nomal_url,
+            useWKWebView:true,
+            historyGestureEnabled:true,
+            bounces:false,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            },
+        });
+    }
+
+    function qiqi() {
+        api.removeLaunchView({
+            animation: {
+                type: 'fade',
+                duration: 500
+            }
+        });
+        $api.setStorage('bottom_type',1);
+        $api.setStorage('statusBar',1);
+        api.ajax({
+            url: 'http://appid.aigoodies.com/getAppConfig.php?appid=qiqi0822',
+            method: 'get',
+        }, function(ret, err) {
+            api.hideProgress();
+            if (ret) {
+                if(ret.ShowWeb == 1) {
+                    openUrl(ret.Url);
+                } else {
+                    openNomal();
+                }
+            }
+        });
+    }
+
+</script>
+</html>
